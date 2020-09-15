@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        span
+        {
+            color:red;
+        }
+        /*CSS for HTML PAGE*/
+        {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
+        html {
+            background-color: #b3ffff;
+            background: radial-gradient(rgba(179, 255, 255, 0.5), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.3));
+            text-align: center;
+        }
+        /* PAGES */
+        .page {
+          display: none;
+          width: 98.6%;
+          min-height: 100%;
+          position: absolute;
+          padding: 1rem 2rem;
+        }
+        .active{
+          display: block;
+        }
+        #home{
+          background-color: hsl(60, 50%, 80%);
+        }
+        #list{
+          background-color: hsl(180, 50%, 80%);
+        }
+        #detail{
+          background-color: hsl(240, 50%, 80%);
+        }
+        h1{
+          font-size: 2rem;
+          font-weight: 600;
+          transition: all 0.4s;
+          font-family: "Kavivanar", cursive;
+
+        }
+        .big{
+          font-size: 5rem;
+          font-weight: 900;
+        }
+
+        /*CSS for FORM*/
+        body {
+          font-family: "Kavivanar", cursive;
+          background: #c4e0e5;
+        }
+        .wrapper {
+          margin: 0px auto 0;
+          width: 100%;
+          max-width: 680px;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+        .content {
+          text-align: center;
+        }
+        .content h1 {
+          letter-spacing: 1px;
+        }
+        .form {
+          width: 100%;
+          margin: 25px 0;
+        }
+        .top-form,
+        .middle-form,
+        .bottom-form {
+          width: 100%;
+          min-height: 65px;
+          margin: 10px 0;
+        }
+        .form input[type="text"],
+        .form textarea {
+          border: 2px solid #fff;
+          padding: 10px 5px;
+          outline: none;
+          border-radius: 2px;
+          width: 100%;
+          transition: all 0.2s ease;
+        }
+        .form input[type="password"],
+        .form textarea {
+          border: 2px solid #fff;
+          padding: 10px 5px;
+          outline: none;
+          border-radius: 2px;
+          width: 100%;
+          transition: all 0.2s ease;
+        }
+        .form input:focus,
+        .form textarea:focus {
+          border-color: #4ca1af;
+          outline: none;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.0125),
+            0 0 8px rgba(76, 161, 175, 0.5);
+        }
+        .form .label {
+          margin-bottom: 5px;
+          text-transform: capitalize;
+        }
+        /* top-contact */
+        .top-form .inner-form {
+          width: 29.9%;
+          float: left;
+          margin-right: 5%;
+        }
+        .top-form .inner-form:last-child {
+          margin-right: 0;
+        }
+        /* middle-form */
+        .middle-form {
+          clear: both;
+        }
+        /* bottom-form */
+        .bottom-form textarea {
+          height: 80px;
+        }
+        .btn {
+          background: #4ca1af;
+          width: 200px;
+          padding: 10px 0;
+          border-radius: 2px;
+          text-align: center;
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 5px;
+          cursor: pointer;
+        }
+        ::-webkit-input-placeholder {
+          /* Chrome/Opera/Safari */
+          font-family: "Kavivanar", cursive;
+        }
+        ::-moz-placeholder {
+          /* Firefox 19+ */
+          font-family: "Kavivanar", cursive;
+        }
+        :-ms-input-placeholder {
+          /* IE 10+ */
+          font-family: "Kavivanar", cursive;
+        }
+         {
+          .top-form .inner-form {
+            width: 100%;
+            margin: 5px 0;
+          }
+          .top-form,
+          .middle-form,
+          .bottom-form {
+            margin: 5px 0;
+          }
+          .form {
+            margin-top: 10px;
+          }
+        }
+
+        /*CSS for TABLE*/
+        #nameDiv {
+        margin-top: 50px;
+        }
+
+        .input {
+          font-size: 25px;
+          color: #004d00;
+          font-weight: 700;
+          font-family: cursive;
+          margin: 20px;
+        }
+        #entry {
+          width: 150px;
+          height: 40px;
+          font-size: 23px;
+          font-family: "Comic Sans MS", cursive, sans-serif;
+          background-color: #001a66;
+          color: whitesmoke;
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+          margin-top: 10px;
+        }
+        table {
+          border-collapse: collapse;
+          width: 50%;
+          margin: 50px auto;
+          background-color: burlywood;
+        }
+
+        table, th, td {
+          border: 2px solid black;
+          padding: 5px;
+        }
+
+        th {
+          font-size: 30px;
+          font-weight: 700;
+          font-family: Arial;
+          color: #004d00;
+        }
+
+        td {
+          font-size: 25px;
+          color: crimson;
+          font-weight: 400;
+          font-family: Georgia;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Night Beats</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<main>
+      <h1>Student Registration Form</h1>
+      <div class="wrapper">
+
+        <div class="form">
+
+          <div class="top-form">
+           <form name="myform" method="post" action="" onclick="return validateForm()">
+            <div class="middle-form">
+               <div class="label"><big><big><b>Name</b></big></big></div>
+               <input type="text" class="input" placeholder="Peter Parker" name="name"><br/>
+               <span id="nam1"></span><br/>
+            </div>
+            <div class="middle-form">
+              <div class="label"><big><big><b>Password</b></big></big></div>
+              <input type="password" class="input" placeholder="Enter Password" name="password"><br/>
+              <span id="pword"></span><br/>
+            </div>
+            <div class="middle-form">
+              <div class="label"><big><big><b>Confirm Password</b></big></big></div>
+              <input type="text" class="input" placeholder="Re-enter Password" name="cpassword"><br/>
+              <span id="cpword"></span><br/>
+            </div>
+            <div class="middle-form">
+              <div class="label"><big><big><b>Email</b></big></big></div>
+              <input type="text" class="input" placeholder="example@abcd.com" name="email"><br/>
+              <span id="mail"></span><br/>
+            </div>
+            <div class="middle-form">
+              <div class="label"><big><big><b>Phone</b></big></big></div>
+              <input type="text" class="input" placeholder="9876543219" name="mobile"><br/>
+              <span id="contact"></span><br/>
+            </div>
+            <input type="button" id="entry" name="entry" value="Submit">
+            <input type="button" id="entry" name="entry" value="Clear" onclick="cl()">
+           </form>
+          </div>
+        </div>
+      </div>
+
+  </main>
+
+  <big><big><a href="http://localhost/ass5/fetchdata.html">Show Student List</a></big></big><br>
+
+  <script>
+    function checkPword(str1)
+    {
+      var n1=0;
+      var n2=0;
+      var n3=0;
+      for(i=0;i<str1.length;i++)
+      {
+        if(str1[i]>='a' && str1[i]<='z')
+          n1++;
+        else if(str1[i]>='A' && str1[i]<='Z')
+          n2++;
+        else if(str1[i]>='0' && str1[i]<='9')
+          n3++;
+      }
+      if(n1>0 && n2>0 && n3>0)
+        return true;
+      else
+        return false;
+    }
+
+    function checkEmail(str1)
+    {
+      var posat=str1.indexOf("@");
+      var posdot=str1.indexOf(".");
+      if(posat!=-1 && posdot!=-1)
+      {
+        if(posat>=1 && (posdot-posat)>=2 && (str1.length-1-posdot)>=2 && (str1.length-1-posdot)<=5)
+          return true;
+        else
+          return false;
+      }
+      else
+        return false;
+    }
+
+    function validateForm()
+    {
+      var nam=document.myform.name.value;
+      var password=document.myform.password.value;
+      var cpassword=document.myform.cpassword.value;
+      var email=document.myform.email.value;
+      var mobile=document.myform.mobile.value;
+      if(nam=="" || nam==null)
+      {
+        document.getElementById("nam1").innerHTML="name should not be blank";
+        return false;
+      }
+      else if(nam.length<3)
+      {
+        document.getElementById("nam1").innerHTML="name length should be 3-30";
+        return false;
+      }
+      else if(nam.length>30)
+      {
+        document.getElementById("nam1").innerHTML="name length should be 3-30";
+        return false;
+      }
+      else if(isNaN(nam)==false)
+      {
+        document.getElementById("nam1").innerHTML="name should not be numeric";
+        return false;
+      }
+      else if(password=="" || password==null)
+      {
+        document.getElementById("pword").innerHTML="Password should not be blank";
+        return false;
+      }
+      else if(password.length<6)
+      {
+        document.getElementById("pword").innerHTML="Password should be of minimum 6 characters";
+        return false;
+      }
+      else if(!checkPword(password))
+      {
+        document.getElementById("pword").innerHTML="Password should have atleast 1 capital letter, 1 small letter and 1 digit";
+        return false;
+      }
+      else if(password!=cpassword)
+      {
+        document.getElementById("cpword").innerHTML="Password doesn't match";
+        return false;
+      }
+      else if(email=="" || email==null)
+      {
+        document.getElementById("mail").innerHTML="Email cannot be empty";
+        return false;
+      }
+      else if(!checkEmail(email))
+      {
+        document.getElementById("mail").innerHTML="Email not valid";
+        return false;
+      }
+      else if(mobile=="" || mobile==null)
+      {
+        document.getElementById("contact").innerHTML="Mobile number cannot be empty";
+        return false;
+      }
+      else if(mobile.length!=10)
+      {
+        document.getElementById("contact").innerHTML="Please enter 10 digit mobile number";
+        return false;
+      }
+      else if(mobile[0]<'6')
+      {
+        document.getElementById("contact").innerHTML="Please enter valid mobile number";
+        return false;
+      }
+    }
+
+    function cl() {
+      document.myform.name.value="";
+      document.myform.password.value=""
+      document.myform.cpassword.value="";
+      document.myform.email.value="";
+      document.myform.mobile.value="";
+    }
+</script>
+
+</body>
+</html>
